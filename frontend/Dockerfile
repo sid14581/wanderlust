@@ -1,10 +1,20 @@
-FROM node:22
+#Stage 1
+FROM node:22 AS frontend-builder
 
 WORKDIR /frontend-app
 
+COPY package*.json ./
+
+RUN npm install
+
 COPY . .
 
-RUN npm i
+#Stage 2
+FROM node:22-slim 
+
+WORKDIR /frontend-app
+
+COPY --from=frontend-builder /frontend-app .
 
 COPY .env.sample .env.local
 
