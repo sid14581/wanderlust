@@ -14,3 +14,9 @@ Browserslist: caniuse-lite is outdated. Please run:
 6:18:37 AM [vite] server restarted.
 6:20:55 AM [vite] .env.docker changed, restarting server...
 6:20:55 AM [vite] server restarted.
+7:05:05 AM [vite] .env.local changed, restarting server...
+7:05:05 AM [vite] server restarted.
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://172.31.33.143:5173/
+  ➜  Network: http://172.17.0.1:5173/
