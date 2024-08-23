@@ -8,8 +8,6 @@ COPY . .
 
 RUN npm i
 
-RUN npm audit fix
-
 RUN npm run test 
 
 #Stage 2
