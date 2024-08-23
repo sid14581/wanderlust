@@ -8,9 +8,9 @@ COPY . .
 
 RUN npm i
 
-RUN npm run test 
-
 RUN npm audit fix
+
+RUN npm run test 
 
 #Stage 2
 FROM node:22-slim
