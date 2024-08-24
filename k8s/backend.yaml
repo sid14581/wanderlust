@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deploy
+  namespace: wanderlust
+  labels:
+    apps: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      apps: backend
+  template:
+    metadata:
+      name: backend
+      labels:
+        apps: backend
+    spec:
+      containers:
+        - name: backend
+          image: sid716/wanderlust-backend:v1.0.0
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: wanderlust
+spec:
+  type: NodePort
+  selector:
+    apps: backend
+  ports:
+    - port: 5000
+      targetPort: 5000
+      protocol: TCP
+      nodePort: 31100
+

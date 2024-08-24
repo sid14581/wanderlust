@@ -1,29 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-deploy
+  name: mongo-deploy
   namespace: wanderlust
   labels:
-    apps: redis
+    app: mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      apps: redis
+      app: mongo
   template:
     metadata:
-      name: redis
+      name: mongo
       labels:
-        apps: redis
+        app: mongo
     spec:
       containers:
-        - name: redis
-          image: redis
+        - name: mongo
+          image: mongo
           ports:
-            - containerPort: 6379
+            - containerPort: 27017
           volumeMounts:
-            - name: mongo-storage
-              mountPath: /var/lib/redis/dump.rdb
+            - mountPath: /data/db
+              name: mongo-storage
       volumes:
         - name: mongo-storage
           persistentVolumeClaim:
@@ -33,12 +33,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis-service
+  name: mongo-service
   namespace: wanderlust
 spec:
   selector:
-    apps: redis
+    app: mongo
   ports:
-    - targetPort: 6379
-      port: 6379
+    - port: 27017
+      targetPort: 27017
       protocol: TCP
