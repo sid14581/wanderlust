@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wanderlust
+  namespace: wanderlust-argocd
+spec:
+  # project: small-scale-urban-Service-App
+  project: default
+  source:
+    repoURL: https://github.com/sid14581/wanderlust.git
+    targetRevision: k8s
+    path: k8s/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: wanderlust-argocd
+  
+  syncPolicy:
+    syncOptions:
+      - PruneLast=true
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+  
