@@ -9,10 +9,10 @@ spec:
   source:
     repoURL: https://github.com/sid14581/wanderlust.git
     targetRevision: k8s
-    path: k8s/
+    path: k8s
   destination:
     server: https://kubernetes.default.svc
-    namespace: wanderlust-argocd
+    namespace: wanderlust
   
   syncPolicy:
     syncOptions:
