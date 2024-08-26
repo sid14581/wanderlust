@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: wanderlust
+  name: deafult
   namespace: wanderlust-argocd
 spec:
   # project: small-scale-urban-Service-App
